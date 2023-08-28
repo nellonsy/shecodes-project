@@ -17,19 +17,20 @@ function showtemp(response){
 
   let weatherMain = document.querySelector("#icon");
 
-  if(response.data.weather.main == "Clear"){
+
+  if(response.data.weather[0].main== 'Clear'){
     weatherMain.innerHTML = "🛤️";
-  } else if (response.data.weather.main == "Rain"){
+  } else if (response.data.weather[0].main == 'Rain'){
     weatherMain.innerHTML = "☔";
-  } else if (response.data.weather.main == "Clouds"){
+  } else if (response.data.weather[0].main == 'Clouds'){
     weatherMain.innerHTML = "☁️";
-  } else if (response.data.weather.main == "Snow"){
+  } else if (response.data.weather[0].main == 'Snow'){
     weatherMain.innerHTML = "❄️";
-  } else if (response.data.weather.main == "Thunderstorm"){
+  } else if (response.data.weather[0].main == 'Thunderstorm'){
     weatherMain.innerHTML = "⛈️";
-  } else if (response.data.weather.main == "Drizzle"){
+  } else if (response.data.weather[0].main == 'Drizzle'){
     weatherMain.innerHTML = "💧";
-  } else if (response.data.weather.main == "Tornado"){
+  } else if (response.data.weather[0].main == 'Tornado'){
     weatherMain.innerHTML = "🌪️";
   } else {
     weatherMain.innerHTML = "🌫️";
