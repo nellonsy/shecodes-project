@@ -13,7 +13,7 @@ datetxt.innerHTML = `${day} ${hour}:${minute}`;
 
 function showtemp(response){
   let temperature = document.querySelector("#temp");
-  temperature.innerHTML = Math.round(response.data.main.temp);
+  temperature.innerHTML = Math.round(response.data.main.temp) + "°C";
 
   let weatherMain = document.querySelector("#icon");
 
@@ -39,6 +39,9 @@ function showtemp(response){
  }
 
 let input = document.querySelector("#name");
+
+
+
 function setCity(event) {
   event.preventDefault();
  
