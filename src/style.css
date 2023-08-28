@@ -1,0 +1,17 @@
+.card-title,
+.card-subtitle {
+    text-align: right;
+
+}
+.current-icon{
+    left: 1rem;
+    position: absolute;
+
+}
+.card-link{
+    padding: 1rem;
+    text-align: center;
+}
+#button{
+    margin-bottom: 0!important;
+}
