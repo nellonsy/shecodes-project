@@ -14,7 +14,26 @@ datetxt.innerHTML = `${day} ${hour}:${minute}`;
 function showtemp(response){
   let temperature = document.querySelector("#temp");
   temperature.innerHTML = Math.round(response.data.main.temp);
- 
+
+  let weatherMain = document.querySelector("#icon");
+
+  if(response.data.weather.main == "Clear"){
+    weatherMain.innerHTML = "🛤️";
+  } else if (response.data.weather.main == "Rain"){
+    weatherMain.innerHTML = "☔";
+  } else if (response.data.weather.main == "Clouds"){
+    weatherMain.innerHTML = "☁️";
+  } else if (response.data.weather.main == "Snow"){
+    weatherMain.innerHTML = "❄️";
+  } else if (response.data.weather.main == "Thunderstorm"){
+    weatherMain.innerHTML = "⛈️";
+  } else if (response.data.weather.main == "Drizzle"){
+    weatherMain.innerHTML = "💧";
+  } else if (response.data.weather.main == "Tornado"){
+    weatherMain.innerHTML = "🌪️";
+  } else {
+    weatherMain.innerHTML = "🌫️";
+  }
  
  }
 
