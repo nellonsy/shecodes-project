@@ -23,7 +23,7 @@ function setCity(event) {
   event.preventDefault();
  
   
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=44dafd052968a35940015054b955f026`;
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=44dafd052968a35940015054b955f026&units=metric`;
   let city = document.querySelector("#citynametxt");
   city.innerHTML = input.value;
   axios.get(url).then(showtemp);
