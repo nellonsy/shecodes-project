@@ -15,6 +15,7 @@ function showtemp(response){
   let temperature = document.querySelector("#temp");
   temperature.innerHTML = Math.round(response.data.main.temp) + "°C";
 
+
   let weatherMain = document.querySelector("#icon");
 
 
@@ -35,6 +36,17 @@ function showtemp(response){
   } else {
     weatherMain.innerHTML = "🌫️";
   }
+
+  let description = document.querySelector('#detail');
+  description.innerHTML = response.data.weather[0].description;
+
+  let feelslike = document.querySelector("#feelslike");
+  feelslike.innerHTML = Math.round(response.data.main.feels_like);
+
+  let humidity = document.querySelector("#Humidity");
+  humidity.innerHTML = response.data.main.humidity;
+
+  console.log(response.data.main.feels_like)
  
  }
 
