@@ -25,6 +25,12 @@ function showtemp(response){
 
   let weatherMain = document.querySelector("#icon");
 
+  let minTemp = document.querySelector("#min");
+  minTemp.innerHTML = Math.round(response.data.main.temp_min) + "°C";
+
+  let maxTemp = document.querySelector("#max");
+  maxTemp.innerHTML = Math.round(response.data.main.temp_max) + "°C";
+
 
   if(response.data.weather[0].main== 'Clear'){
     weatherMain.innerHTML = "🛤️";
@@ -52,6 +58,15 @@ function showtemp(response){
 
   let humidity = document.querySelector("#Humidity");
   humidity.innerHTML = response.data.main.humidity;
+
+  let windSpeed = document.querySelector('#WindSpeed');
+  windSpeed.innerHTML = response.data.wind.speed;
+
+  let visibility = document.querySelector('#Visibility');
+  visibility.innerHTML = (response.data.visibility)/1000;
+
+  let Pressure = document.querySelector('#Pressure');
+  Pressure.innerHTML = response.data.main.pressure;
 
  
  }
