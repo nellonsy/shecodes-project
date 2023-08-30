@@ -7,11 +7,17 @@ let day = days[today.getDay()];
 let hour = today.getHours();
 let minute = today.getMinutes();
 
+
 let datetxt = document.querySelector("#datetxt"); 
 
 datetxt.innerHTML = `${day} ${hour}:${minute}`;
 
+
+
 function showtemp(response){
+
+
+
   let temperature = document.querySelector("#temp");
   temperature.innerHTML = Math.round(response.data.main.temp) + "°C";
 
@@ -46,21 +52,31 @@ function showtemp(response){
   let humidity = document.querySelector("#Humidity");
   humidity.innerHTML = response.data.main.humidity;
 
-  console.log(response.data.main.feels_like)
  
  }
 
 let input = document.querySelector("#name");
 
+function starter (position){
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
 
+  console.log(lon,lat);
+
+   let url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c0938b4e6cbdb62dd871240014316343&units=metric`;
+   axios.get(url).then(showtemp);
+}
 
 function setCity(event) {
   event.preventDefault();
+
+  
+  let city = document.querySelector("#citynametxt");
+  city.innerHTML = input.value;
  
   
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=44dafd052968a35940015054b955f026&units=metric`;
-  let city = document.querySelector("#citynametxt");
-  city.innerHTML = input.value;
+  
   axios.get(url).then(showtemp);
 }
 
@@ -69,10 +85,13 @@ function setCity(event) {
 
 
 
+navigator.geolocation.getCurrentPosition(starter);
 
 
 
 
 
 addEventListener("click", setCity);
+
+
 
