@@ -12,28 +12,50 @@ let datetxt = document.querySelector("#datetxt");
 
 datetxt.innerHTML = `${day} ${hour}:${minute}`;
 
-let convert = document.querySelector("#convert")
 
+let temperature = document.querySelector("#temp");
+let Ctemp;
+
+
+function convertToF(event){
+  event.preventDefault;
+  
+  let Ftemp = (Ctemp * 9) / 5 + 32;
+
+  temperature.innerHTML = Math.round(Ftemp);
+  fahrenheit.setAttribute("class", "not-active");
+  celsius.setAttribute("class", "active");
+
+}
+
+function convertToC(event){
+  event.preventDefault;
+  temperature.innerHTML = Math.round(Ctemp);
+  celsius.setAttribute("class", "not-active");
+  fahrenheit.setAttribute("class", "active");
+
+
+}
 
 
 
 function showtemp(response){
 
+  Ctemp = response.data.main.temp;
+
   let city = document.querySelector("#citynametxt");
   city.innerHTML = response.data.name;
 
-  let temperature = document.querySelector("#temp");
-  temperature.innerHTML = Math.round(response.data.main.temp) + "°C";
+  temperature.innerHTML = Math.round(response.data.main.temp);
 
 
   let weatherMain = document.querySelector("#icon");
 
   let minTemp = document.querySelector("#min");
-  minTemp.innerHTML = Math.round(response.data.main.temp_min) + "°C";
+  minTemp.innerHTML = Math.round(response.data.main.temp_min);
 
   let maxTemp = document.querySelector("#max");
-  maxTemp.innerHTML = Math.round(response.data.main.temp_max) + "°C";
-
+  maxTemp.innerHTML = Math.round(response.data.main.temp_max);
 
   weatherMain.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 
@@ -64,8 +86,6 @@ function starter (position){
   const lat = position.coords.latitude;
   const lon = position.coords.longitude;
 
-  console.log(lon,lat);
-
   
 
    let url =`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=c0938b4e6cbdb62dd871240014316343&units=metric`;
@@ -95,7 +115,14 @@ navigator.geolocation.getCurrentPosition(starter);
 
 
 
-addEventListener("click", setCity);
 
+addEventListener("submit", setCity);
+
+
+let fahrenheit = document.querySelector("#fahrenheit");
+let celsius = document.querySelector("#celsius");
+
+fahrenheit.addEventListener("click", convertToF);
+celsius.addEventListener("click", convertToC);
 
 
