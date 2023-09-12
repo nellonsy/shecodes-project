@@ -12,6 +12,9 @@ let datetxt = document.querySelector("#datetxt");
 
 datetxt.innerHTML = `${day} ${hour}:${minute}`;
 
+let convert = document.querySelector("#convert")
+
+
 
 
 function showtemp(response){
