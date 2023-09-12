@@ -35,23 +35,7 @@ function showtemp(response){
   maxTemp.innerHTML = Math.round(response.data.main.temp_max) + "°C";
 
 
-  if(response.data.weather[0].main== 'Clear'){
-    weatherMain.innerHTML = "🛤️";
-  } else if (response.data.weather[0].main == 'Rain'){
-    weatherMain.innerHTML = "☔";
-  } else if (response.data.weather[0].main == 'Clouds'){
-    weatherMain.innerHTML = "☁️";
-  } else if (response.data.weather[0].main == 'Snow'){
-    weatherMain.innerHTML = "❄️";
-  } else if (response.data.weather[0].main == 'Thunderstorm'){
-    weatherMain.innerHTML = "⛈️";
-  } else if (response.data.weather[0].main == 'Drizzle'){
-    weatherMain.innerHTML = "💧";
-  } else if (response.data.weather[0].main == 'Tornado'){
-    weatherMain.innerHTML = "🌪️";
-  } else {
-    weatherMain.innerHTML = "🌫️";
-  }
+  weatherMain.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
 
   let description = document.querySelector('#detail');
   description.innerHTML = response.data.weather[0].description;
